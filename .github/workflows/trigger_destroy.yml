@@ -21,7 +21,7 @@ jobs:
         run: |
           cd deployments/${{ inputs.project }}
           proj=$(echo ${{ inputs.project }} | cut -d'/' -f2)
-          terraform init -backend-config="schema_name=$proj"
+          terraform init
           terraform destroy -auto-approve
         env:
           TF_VAR_snowflake_username: ${{ secrets.TF_VAR_snowflake_username }}
