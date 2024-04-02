@@ -28,3 +28,4 @@ jobs:
           TF_VAR_snowflake_password: ${{ secrets.TF_VAR_snowflake_password }}
           TF_VAR_github_token: ${{ secrets.TF_VAR_github_token }}
           TF_VAR_dbt_token: ${{ secrets.TF_VAR_dbt_token }}
+          
