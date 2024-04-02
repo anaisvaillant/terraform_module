@@ -5,7 +5,7 @@ terraform {
     hostname = "app.terraform.io"
     organization = "dbt_cloud"
 
-    workspace {
+    workspaces {
       name = "dbt_cloud_workspace"
     }
   }
