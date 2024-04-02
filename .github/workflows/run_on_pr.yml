@@ -64,9 +64,9 @@ jobs:
 
     - name: Configure Terraform Cloud Credentials
       run: |
-        echo "credentials \"app.terraform.io\" {" > terraform.rc
-        echo "  token = \"${{ secrets.TF_API_TOKEN }}\"" >> terraform.rc
-        echo "}" >> terraform.rc
+        echo "credentials \"app.terraform.io\" {" > $HOME/.terraformrc
+        echo "  token = \"${{ secrets.TF_API_TOKEN }}\"" >> $HOME/.terraformrc
+        echo "}" >> $HOME/.terraformrc
       env:
         TF_CLI_CONFIG_FILE: ${{ github.workspace }}/terraform.rc
         
