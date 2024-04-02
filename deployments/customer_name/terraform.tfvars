@@ -12,7 +12,7 @@ github_installation_id = 267820
 cruft_template_url = "https://github.com/b-per/dbt-project-template.git"
 
 # project config
-project_name = "Customer Name"
+project_name = "Customer_Name"
 
 database_envs = {
   "DEV" = {
