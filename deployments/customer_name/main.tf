@@ -1,4 +1,5 @@
 
+// backend is associated with where you want the logs stored
 terraform {
 
   backend "remote" {
