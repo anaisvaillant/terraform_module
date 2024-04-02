@@ -34,6 +34,7 @@ jobs:
       run: |
         echo "matrix"="{\"files\":$(echo "${{ steps.changed-files-specific.outputs.all_modified_files }}" | jq -c '[.[] | select(startswith("deployments/")) | split("/")[0:2] | join("/") ] | unique' )}" >> $GITHUB_OUTPUT
 
+
   terraform_apply:
     if: ${{ needs.folder_changes.outputs.any_modified == 'true' }}
     needs: folder_changes
@@ -49,6 +50,7 @@ jobs:
       TF_VAR_snowflake_password: ${{ secrets.TF_VAR_snowflake_password }}
       TF_VAR_github_token: ${{ secrets.TF_VAR_github_token }}
       TF_VAR_dbt_token: ${{ secrets.TF_VAR_dbt_token }}
+      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
     strategy:
       matrix: ${{fromJson(needs.folder_changes.outputs.matrix)}}
       # 1 when using PG as a backend
@@ -60,6 +62,14 @@ jobs:
         fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
     - uses: hashicorp/setup-terraform@v2
 
+    - name: Configure Terraform Cloud Credentials
+      run: |
+        echo "credentials \"app.terraform.io\" {" > terraform.rc
+        echo "  token = \"${{ secrets.TF_API_TOKEN }}\"" >> terraform.rc
+        echo "}" >> terraform.rc
+      env:
+        TF_CLI_CONFIG_FILE: ${{ github.workspace }}/terraform.rc
+        
     - name: Install cruft
       id: cruft
       run: |
