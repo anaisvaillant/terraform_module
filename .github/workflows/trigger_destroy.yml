@@ -24,12 +24,6 @@ jobs:
           terraform init -backend-config="schema_name=$proj"
           terraform destroy -auto-approve
         env:
-          PGHOST: ${{ secrets.PGHOST }}
-          PGSSLMODE: ${{ secrets.PGSSLMODE }}
-          PGPORT: ${{ secrets.PGPORT }}
-          PGUSER: ${{ secrets.PGUSER }}
-          PGPASSWORD: ${{ secrets.PGPASSWORD }}
-          PGDATABASE: ${{ secrets.PGDATABASE }}
           TF_VAR_snowflake_username: ${{ secrets.TF_VAR_snowflake_username }}
           TF_VAR_snowflake_password: ${{ secrets.TF_VAR_snowflake_password }}
           TF_VAR_github_token: ${{ secrets.TF_VAR_github_token }}

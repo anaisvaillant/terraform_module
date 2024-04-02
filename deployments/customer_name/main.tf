@@ -1,10 +1,13 @@
 
 terraform {
 
-  backend "pg" {
-    conn_str    = "postgres://"
-    # we set the schema name in CI/CD automatically
-    schema_name = "default"
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "dbt_cloud"
+
+    workspace {
+      name = "dbt_cloud_workspace"
+    }
   }
 
   required_version = ">= 1.3"
@@ -20,7 +23,7 @@ terraform {
     }
     dbtcloud = {
       source  = "dbt-labs/dbtcloud"
-      version = ">= 0.2.10"
+      version = ">= 0.2.20"
     }
   }
 }
