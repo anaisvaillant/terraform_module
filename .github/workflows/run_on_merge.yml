@@ -46,10 +46,10 @@ jobs:
       pull-requests: write
       contents: read
     env:
-      TF_VAR_snowflake_username: ${{ secrets.TF_VAR_SNOWFLAKE_USERNAME }}
-      TF_VAR_snowflake_password: ${{ secrets.TF_VAR_SNOWFLAKE_PASSWORD }}
-      TF_VAR_github_token: ${{ secrets.TF_VAR_GITHUB_TOKEN }}
-      TF_VAR_dbt_token: ${{ secrets.TF_VAR_DBT_TOKEN }}
+      TF_VAR_snowflake_username: ${{ secrets.TF_VAR_snowflake_username }}
+      TF_VAR_snowflake_password: ${{ secrets.TF_VAR_snowflake_password }}
+      TF_VAR_github_token: ${{ secrets.TF_VAR_github_token }}
+      TF_VAR_dbt_token: ${{ secrets.TF_VAR_dbt_token }}
       TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
     strategy:
       matrix: ${{fromJson(needs.folder_changes.outputs.matrix)}}
