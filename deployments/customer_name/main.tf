@@ -45,7 +45,8 @@ provider "github" {
 # to create Snowflake users/databases/roles/warehouses
 module "dbtcloud_github_snowflake" {
   # source = "../dbt-terraform-modules/modules/combined/dbtcloud_github_snowflake"
-  source = "github.com/b-per/dbt-terraform-modules?ref=v0.1.4//modules/combined/dbtcloud_github_snowflake"
+    source = "github.com/anaisvaillant/dbt-terraform-modules//modules/combined/dbtcloud_github_snowflake"
+
 
 
   snowflake_account      = var.snowflake_account
